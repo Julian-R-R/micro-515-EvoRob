@@ -34,12 +34,43 @@
     <body name="static_box" pos="0 0 2">
       <geom name="box" type="box" size="0.25 0.25 0.25" rgba="0.8 0.4 0.1 1" mass="0.2"/>
     </body>
+    <body name="ball" pos="0.5 0 2">
+      <geom name="sphere" type="sphere" size="0.15" rgba="0.1 0.4 0.8 1" mass="1"/>
+    </body>
+    <body name="ball2" pos="-1 0 2">
+      <geom name="sphere2" type="sphere" size="0.35" rgba="0.1 0.4 0.8 1" mass="1"/>
+    </body>
 
     <!-- Free-falling objects -->
-    <!-- TODO -->
+    <body name="falling_square" pos="0 1 2">
+          <geom name="box2" type="box" size="0.2 0.2 0.2" rgba="0.8 0.1 0.1 1" mass="0.5"/>
+      <freejoint/>
+    </body>
+
+    <body name="ball3" pos="0 -1 2">
+      <geom name="sphere3" type="sphere" size="0.35" rgba="0.1 0.4 0.8 1" mass="1"/>
+      <freejoint/>
+    </body>
 
     <!-- Simple 2-link robot arm -->
-    <!-- TODO -->
+    <body name="base" pos="0 0 0.1">
+      <geom name="base_geom" type="cylinder" size="0.1 0.05" rgba="0.5 0.5 0.5 1"/>
+      <body name="link1" pos="0 0 0.05">
+        <joint name="joint1" type="hinge" axis="0 0 1" range="-180 180" damping="0.1"/>
+        <geom name="link1_geom" type="capsule" size="0.05" fromto="0 0 0 0 0 0.5" material="robot"/>
+
+        <body name="link2" pos="0 0 0.5">
+          <joint name="joint2" type="hinge" axis="0 1 0" range="-120 120" damping="0.1"/>
+          <geom name="link2_geom" type="capsule" size="0.04" fromto="0 0 0 0.4 0 0" material="robot"/>
+
+          <!-- End effector -->
+          <body name="end_effector" pos="0.4 0 0">
+            <geom name="ee_geom" type="sphere" size="0.06" rgba="0.9 0.1 0.1 1"/>
+          </body>
+        </body>
+      </body>
+    </body>
+
 
   </worldbody>
 
